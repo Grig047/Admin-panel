@@ -68,7 +68,7 @@
                     <img src="/admin/dist/img/admin_gr.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                    <a href="{{route('home')}}" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
                 </div>
             </div>
             <!-- Sidebar Menu -->
@@ -82,6 +82,14 @@
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 General
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('users.index')}}" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            <p>
+                                Users
                             </p>
                         </a>
                     </li>

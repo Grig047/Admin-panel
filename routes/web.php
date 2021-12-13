@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\{CategoryController, PostController, UserController};
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +28,7 @@ Route::middleware(['role:admin'])->prefix('admin_page')->group(function (){
     Route::resources([
         'category' => CategoryController::class,
         'post' => PostController::class,
+        'users' => UserController::class,
     ]);
 });
 
