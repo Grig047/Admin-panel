@@ -24,6 +24,9 @@
                         <th>
                             Text
                         </th>
+                        <th>
+                            Image
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,6 +46,9 @@
                             </td>
                             <td>
                                 <div class="container">{{$post->text}}</div>
+                            </td>
+                            <td>
+                                <div class="container"></div>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="{{route('post.edit', $post->id)}}">
@@ -86,6 +92,8 @@
                                 </form>
                             </td>
                         </tr>
+                        <img src="{{asset('')}}">
+
                     @endforeach
                     </tbody>
                 </table>

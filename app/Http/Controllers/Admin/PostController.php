@@ -28,20 +28,24 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::latest()->get();
-        return  view('admin.post.create', compact('categories'));
+        return view('admin.post.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        $file = $request->file('img');
+        $filename = $file->getClientOriginalName();
+        $file->storeAs('/images', $filename);
+
         Post::create([
             'title' => $request->title,
-            'img' => $request->img,
+            'img' => $filename,
             'text' => $request->text,
             'cat_id' => $request->cat_id,
         ]);
@@ -51,7 +55,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
@@ -62,20 +66,20 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
     {
         $categories = Category::latest()->get();
-        return  view('admin.post.edit', compact('post', 'categories'));
+        return view('admin.post.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
@@ -92,12 +96,18 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
     {
         $post->delete();
         return redirect()->route('post.index')->with('message', 'Post Deleted!');
+    }
+
+    public function sh()
+    {
+        $photo = Post::all();
+
     }
 }

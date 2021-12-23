@@ -7,7 +7,7 @@
         <div class="card-header">
             <h1 class="card-title">Create Blog</h1>
         </div>
-        <form action="{{route('post.store')}}" method="POST">
+        <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -19,9 +19,10 @@
                     <textarea name="text" id="text" class="form-control" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="feature_image">Feature Image</label>
-                    <input type="text" id="feature_image" name="img" value="" readonly required>
-                    <a href="" class="popup_selector" data-inputid="feature_image">Select Image</a>
+                    <img src="" id="display-image">
+                </div>
+                <div class="form-group">
+                    <input type="file" id="img" name="img" value="" onChange="handleImageUpload()">
                 </div>
                 <div class="form-group">
                     <label for="cat_id">Select Category</label>
