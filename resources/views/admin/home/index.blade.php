@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- Main content -->
-    <section class="container">
+    <section>
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
@@ -34,7 +34,7 @@
                             <p>Posts</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="ion ion-android-apps"></i>
                         </div>
                         <a href="{{route('post.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>

@@ -41,7 +41,7 @@ class PostController extends Controller
     {
         $file = $request->file('img');
         $filename = $file->getClientOriginalName();
-        $file->storeAs('/images', $filename);
+        $file->storeAs('/public', $filename);
 
         Post::create([
             'title' => $request->title,
@@ -84,9 +84,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $file = $request->file('img');
+        $filename = $file->getClientOriginalName();
+        $file->storeAs('/images', $filename);
+
         $post->update([
             'title' => $request->title,
-            'img' => $request->img,
+            'img' => $filename,
             'text' => $request->text,
             'cat_id' => $request->cat_id,
         ]);

@@ -31,7 +31,6 @@
                     </thead>
                     <tbody>
                     @foreach($posts as $post)
-                        <tr>
                             <td>
                                 {{$post->id}}
                             </td>
@@ -92,8 +91,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <img src="{{asset('')}}">
-
                     @endforeach
                     </tbody>
                 </table>

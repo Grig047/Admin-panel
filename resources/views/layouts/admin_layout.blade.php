@@ -117,7 +117,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ml-1">
                         <a href="{{route('users.index')}}" class="nav-link">
                             <i class="fas fa-users"></i>
                             <p>
