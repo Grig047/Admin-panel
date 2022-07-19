@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
-        return view('admin.category.index', compact('categories'));
+        //
     }
 
     /**
@@ -26,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        //
     }
 
     /**
@@ -37,19 +36,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'title' => $request->cat_name,
-        ]);
-        return redirect()->route('category.index')->with('message', 'Category Created!');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Product $product)
     {
         //
     }
@@ -57,38 +53,34 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Product $product)
     {
-        return view('admin.category.edit', compact('category'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Product $product)
     {
-        $category->update([
-            'title' => $request->name,
-        ]);
-        return redirect()->route('category.index')->with('message', 'Category Updated!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Product $product)
     {
-        $category->delete();
-        return redirect()->route('category.index')->with('message', 'Category Deleted!');
+        //
     }
 }

@@ -16,19 +16,10 @@ use App\Http\Controllers\Admin\{CategoryController, PostController, UserControll
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::middleware(['role:admin'])->prefix('admin_page')->group(function (){
-    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home_admin');
-    Route::resources([
-        'category' => CategoryController::class,
-        'post' => PostController::class,
-        'users' => UserController::class,
-    ]);
-});
 

@@ -26,59 +26,60 @@
     <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
     <!-- colorbox -->
     <link rel="stylesheet" href="{{ asset("admin/dist/css/colorbox.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" id="general">
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('home')}}" class="nav-link">Home</a>
-            </li>
-        </ul>
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{route('home')}}" class="nav-link">Home</a>
+        </li>
+    </ul>
 
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->
-            @guest
-                @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                @endif
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Authentication Links -->
+        @guest
+            @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+            @endif
 
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-            @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+            @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+            @endif
+        @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        Выйти
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
-        </ul>
-    </nav>
-    <!-- /.navbar -->
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+    </ul>
+</nav>
+<!-- /.navbar -->
 <div class="wrapper">
 
     <!-- Main Sidebar Container -->
@@ -92,7 +93,8 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{asset('admin/dist/img/AdminLTELogo.png')}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{asset('admin/dist/img/AdminLTELogo.png')}}" class="img-circle elevation-2"
+                         alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{route('home')}}" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
@@ -106,63 +108,39 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
                         <a href="{{route('home_admin')}}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+{{--                            <i class="nav-icon fas fa-tachometer-alt"></i>--}}
                             <p>
-                                General
+                               Главная
                             </p>
                         </a>
                     </li>
                     <li class="nav-item ml-1">
                         <a href="{{route('users.index')}}" class="nav-link">
-                            <i class="fas fa-users"></i>
                             <p>
-                                Users
+                                Пользователи
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                    <li class="nav-item ml-1">
+                        <a href="{{route('about_company_create')}}" class="nav-link">
                             <p>
-                                Blog
-                                <i class="right fas fa-angle-left"></i>
+                                О Компании
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-
-                            <li class="nav-item">
-                                <a href="{{route('post.index')}}" class="nav-link">
-                                    <p>Blogs</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('post.create')}}" class="nav-link">
-                                    <p>Create Blog</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-align-left"></i>
+                    <li class="nav-item ml-1">
+                        <a href="{{route('brand_index')}}" class="nav-link">
                             <p>
-                                Category
-                                <i class="right fas fa-angle-left"></i>
+                                Бренды
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-
-                            <li class="nav-item">
-                                <a href="{{route('category.index')}}" class="nav-link">
-                                    <p>Categories</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('category.create')}}" class="nav-link">
-                                    <p>Create Category</p>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item ml-1">
+                        <a href="#" class="nav-link">
+                            <p>
+                                Товары
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -178,6 +156,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
+                        @if(session()->has('message'))
+                            <div class="alert alert-success mt-2 col-md-12" id="message">
+                                <h2><i class="fas fa-check"> {{ session()->get('message') }}</i></h2>
+                            </div>
+                        @endif
                         <h1 class="m-0">@yield('header_title')</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -225,6 +208,7 @@
 <script src="/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/admin/dist/js/adminlte.js"></script>
+<script src="{{asset('js/style.js')}}"></script>
 
 </body>
 </html>

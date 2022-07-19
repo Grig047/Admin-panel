@@ -17,10 +17,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $post_count = Post::all()->count();
-        $category_count = Category::all()->count();
         $user_count = User::all()->count();
-        return view('admin.home.index', compact('post_count', 'category_count', 'user_count'));
+        return view('admin.home.index', compact('user_count'));
     }
 
     /**

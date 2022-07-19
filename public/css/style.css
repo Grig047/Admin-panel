@@ -1,0 +1,21 @@
+.img{
+    width: 250px;
+    height: 200px;
+}
+
+.video{
+    width: 350px;
+    height: 300px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .media_div{
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .img{
+        width: 200px;
+        height: 200px;
+    }
+}
